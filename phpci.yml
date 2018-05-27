@@ -1,0 +1,49 @@
+build_settings:
+  ignore:
+    - "vendor"
+    - "Tests"
+
+setup:
+  composer:
+    action: "install"
+
+test:
+  php_parallel_lint:
+    directory: "Classes"
+  # pdepend:
+  #   directory: "."
+  # php_cs_fixer:
+  #   verbose: true
+  #   diff: true
+  #   level: "psr2"
+  #   workingdir: "Classes"
+  php_code_sniffer:
+    path: "Classes"
+    standard: "PSR1,PSR2"
+  php_docblock_checker:
+    path: "Classes"
+  php_cpd:
+    standard: "PSR2"
+    path: "Classes"
+  php_mess_detector:
+    path: 'Classes'
+    rules:
+      - "cleancode"
+      - "controversial"
+      - "codesize"
+      - "design"
+      - "naming"
+      - "unusedcode"
+  php_unit:
+    config: "phpunit.xml"
+    run_from: "."
+  php_loc:
+    directory: "Classes"
+  technical_debt:
+    searches: "TODO, FIXME, WIP"
+
+# complete: Always called when the test phase completes, regardless of success or failure.
+# success: Called upon success of the test phase.
+# failure: Called upon failure of the test phase.
+# fixed: Called upon success of the test phase if the previous build of the branch was a failure.
+# broken: Called upon failure of the test phase if the previous build of the branch was a success.
