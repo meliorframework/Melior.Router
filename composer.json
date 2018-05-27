@@ -1,5 +1,5 @@
 {
-    "name": "melior/router",
+    "name": "melior/routing",
     "description": "The router component of Melior.",
     "type": "library",
     "license": "Apache-2.0",
@@ -12,7 +12,7 @@
     "require": {},
     "autoload": {
         "psr-4": {
-            "Melior\\Router\\": "Classes/"
+            "Melior\\Routing\\": "Classes/"
         }
     }
 }
