@@ -1,0 +1,13 @@
+{
+    "name": "melior/router",
+    "description": "The router component of Melior.",
+    "type": "library",
+    "license": "Apache-2.0",
+    "authors": [
+        {
+            "name": "Maximilian Schmidt",
+            "email": "maximilianschmidt404@gmail.com"
+        }
+    ],
+    "require": {}
+}
