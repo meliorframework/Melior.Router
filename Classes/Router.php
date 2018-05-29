@@ -23,4 +23,9 @@ namespace Melior\Routing;
 
 class Router
 {
+    /**
+     * @Inject("Settings")
+     * @var array
+     */
+    protected $settings;
 }
