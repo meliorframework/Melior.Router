@@ -1,7 +1,7 @@
 {
     "name": "melior/routing",
     "description": "The router component of Melior.",
-    "type": "library",
+    "type": "melior-package",
     "license": "Apache-2.0",
     "authors": [
         {
