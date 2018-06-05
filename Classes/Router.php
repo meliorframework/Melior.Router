@@ -22,6 +22,7 @@
 namespace Melior\Routing;
 
 use Melior\Core\Exceptions\InvalidConfigurationException;
+use Symfony\Component\HttpFoundation\Request;
 
 class Router
 {
@@ -32,35 +33,61 @@ class Router
     protected $settings;
 
     /**
+     * @Inject("Request")
+     * @var Request
+     */
+    protected $request;
+
+    /**
      * @Inject
      * @var AltoRouter
      */
     protected $router;
 
+    /**
+     * Gathers all route configurations and constructs a new instance.
+     */
     public function __construct()
     {
         $routes = $this->settings->get('Melior.Routes');
 
         foreach ($routes as $name => $route) {
             if (!array_key_exists('method', $route)) {
-                throw new InvalidConfigurationException("Route configuration '$name' is missing required key 'method'!", 1528065438);
+                throw new InvalidConfigurationException(
+                    "Route configuration '$name' is missing required key 'method'!",
+                    1528065438
+                );
             }
 
             if (!array_key_exists('path', $route)) {
-                throw new InvalidConfigurationException("Route configuration '$name' is missing required key 'path'!", 1528065470);
+                throw new InvalidConfigurationException(
+                    "Route configuration '$name' is missing required key 'path'!",
+                    1528065470
+                );
             }
 
             if (!array_key_exists('target', $route)) {
-                throw new InvalidConfigurationException("Route configuration '$name' is missing require key 'target'!", 1528065516);
+                throw new InvalidConfigurationException(
+                    "Route configuration '$name' is missing required key 'target'!",
+                    1528065516
+                );
             }
 
             $this->router->map($route['method'], $route['path'], $route['target'], $name);
         }
     }
 
-    public function resolve(string $requestPath)
+    /**
+     * Resolves the current route and returns it's desired target.
+     *
+     * @return string
+     */
+    public function resolve() : string
     {
-        $result = $this->router->match($requestPath);
+        $path = $this->request->query->get('path');
+        $method = $this->request->getMethod();
+
+        $result = $this->router->match($path, $method);
 
         return $result;
     }
