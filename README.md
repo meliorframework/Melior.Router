@@ -1,5 +1,5 @@
 # Melior Router
-The routing component 
+The routing component of Melior.
 
 ![GitHub tag](https://img.shields.io/github/tag/meliorframework/routing.svg)
 ![GitHub release](https://img.shields.io/github/release/meliorframework/routing.svg)
