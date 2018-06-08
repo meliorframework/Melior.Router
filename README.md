@@ -29,3 +29,12 @@ The routing component of Melior.
 **Please notice!**    
 This project is currently in development.
 Watch the repo to get notified about upcoming releases.
+
+------
+
+## Externals
+
+This component relies on the following external libraries:
+
+- [AltoRouter by dannyvankooten](https://github.com/dannyvankooten/AltoRouter)
+- [Symfony's http-foundation component](https://github.com/symfony/http-foundation/)
