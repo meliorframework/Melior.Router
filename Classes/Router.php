@@ -26,7 +26,7 @@ use Symfony\Component\HttpFoundation\Request;
 
 use Melior\Routing\Interfaces\RouterInterface;
 
-class Router extends AltoRouter implements RouterInterface
+class Router extends \AltoRouter implements RouterInterface
 {
     /**
      * @Inject("Settings")
