@@ -49,9 +49,10 @@ class Router extends \AltoRouter implements RouterInterface
      */
     public function __construct(Settings $settings, Request $request)
     {
+        $this->settings = $settings;
         $this->request = $request;
 
-        $routes = $settings->get('Melior.Routes');
+        $routes = $settings->get('Melior.Routing.routes');
 
         foreach ($routes as $name => $route) {
             if (!array_key_exists('method', $route)) {
@@ -90,6 +91,11 @@ class Router extends \AltoRouter implements RouterInterface
         $method = $this->request->getMethod();
 
         $result = $this->match($path, $method);
+
+        if (empty($result)) {
+            $fallback = $this->settings->get('Melior.Routing.fallbackRoute');
+            $result = $this->settings->get("Melior.Routing.routes.$fallback.target");
+        }
 
         return $result;
     }
