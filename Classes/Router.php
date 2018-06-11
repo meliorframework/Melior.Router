@@ -21,31 +21,37 @@
 
 namespace Melior\Routing;
 
-use Melior\Core\Exceptions\InvalidConfigurationException;
 use Symfony\Component\HttpFoundation\Request;
+
+use Melior\Core\Exceptions\InvalidConfigurationException;
+use Melior\Core\Settings\Settings;
 
 use Melior\Routing\Interfaces\RouterInterface;
 
 class Router extends \AltoRouter implements RouterInterface
 {
     /**
-     * @Inject("Settings")
-     * @var array
+     * @var Settings
      */
     protected $settings;
 
     /**
-     * @Inject("Request")
      * @var Request
      */
     protected $request;
 
     /**
      * Gathers all route configurations and constructs a new instance.
+     *
+     * @Inject
+     * @param Settings $settings
+     * @param Request $request
      */
-    public function __construct()
+    public function __construct(Settings $settings, Request $request)
     {
-        $routes = $this->settings->get('Melior.Routes');
+        $this->request = $request;
+
+        $routes = $settings->get('Melior.Routes');
 
         foreach ($routes as $name => $route) {
             if (!array_key_exists('method', $route)) {
