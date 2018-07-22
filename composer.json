@@ -22,7 +22,7 @@
     "extra": {
         "installer-name": "Melior.Routing",
         "melior": {
-            "containerDefinitions": "./Classes/Container/Definitions.php"
+
         }
     }
 }
