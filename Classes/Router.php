@@ -94,9 +94,9 @@ class Router extends \AltoRouter implements RouterInterface
 
         if (empty($result)) {
             $fallback = $this->settings->get('Melior.Routing.fallbackRoute');
-            $result = $this->settings->get("Melior.Routing.routes.$fallback.target");
+            $result = $this->settings->get("Melior.Routing.routes.$fallback");
         }
 
-        return $result;
+        return $result['target'];
     }
 }
