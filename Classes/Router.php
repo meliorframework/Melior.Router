@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright 2018 Maximilian Schmidt
+ * Copyright 2018 Maximilian Schmidt.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,10 +22,8 @@
 namespace Melior\Routing;
 
 use Symfony\Component\HttpFoundation\Request;
-
 use Melior\Core\Exceptions\InvalidConfigurationException;
 use Melior\Core\Settings\Settings;
-
 use Melior\Routing\Interfaces\RouterInterface;
 
 class Router extends \AltoRouter implements RouterInterface
@@ -44,8 +42,9 @@ class Router extends \AltoRouter implements RouterInterface
      * Gathers all route configurations and constructs a new instance.
      *
      * @Inject
+     *
      * @param Settings $settings
-     * @param Request $request
+     * @param Request  $request
      */
     public function __construct(Settings $settings, Request $request)
     {
@@ -85,7 +84,7 @@ class Router extends \AltoRouter implements RouterInterface
      *
      * @return string
      */
-    public function resolve() : string
+    public function resolve(): string
     {
         $path = $this->request->query->get('path');
         $method = $this->request->getMethod();

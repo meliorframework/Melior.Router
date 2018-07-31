@@ -1,6 +1,6 @@
 <?php
 /**
-* Copyright 2018 Maximilian Schmidt
+* Copyright 2018 Maximilian Schmidt.
 *
 * Licensed under the Apache License, Version 2.0 (the "License");
 * you may not use this file except in compliance with the License.
@@ -24,5 +24,6 @@ namespace Melior\Routing\Interfaces;
 interface RouterInterface
 {
     public function map($method, $route, $target);
+
     public function match($requestUrl, $requestMethod);
 }
